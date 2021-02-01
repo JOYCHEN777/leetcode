@@ -12,16 +12,14 @@ public class LC778 {
     public static int swimInWater(int[][] grid) {
         int n = grid.length;
         int target=grid[n - 1][n - 1];
-        int res = Math.min(grid[0][0],target)-1;
+        int res = Math.max(grid[0][0],target)-1;
         boolean dfs = false;
 
         while (!dfs) {
             res++;
             int[][] temp=new int[n][n];
             for(int a=0;a<n;a++){
-                for(int b=0;b<n;b++){
-                    temp[a][b]=grid[a][b];
-                }
+                System.arraycopy(grid[a], 0, temp[a], 0, n);
             }
             dfs = swimDfs(temp, 0, 0, res, n, target);
         }
@@ -47,7 +45,5 @@ public class LC778 {
         int[][] grid = new int[][]{{0, 2}, {1, 3}};
         System.out.println(swimInWater(grid));
     }
-
-
 }
 
