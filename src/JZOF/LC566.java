@@ -16,7 +16,6 @@ public class LC566 {
             for(int j=0;j<nums[0].length;j++){
                 res[index/r][index%c]=nums[i][j];
                 index++;
-                System.out.println(res[index/r][index%]);
             }
         }
         return res;
