@@ -36,7 +36,7 @@ public class LC765 {
 
             }
         }
-
+        return 0;
     }
     public int findC(int i){
         return i%2==0?i+1:i-1;
