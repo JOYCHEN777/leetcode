@@ -14,6 +14,7 @@ public class T {
         System.out.println(d.poll());
         System.out.println(d.pop());
     }
+    
 
 
 
