@@ -33,6 +33,7 @@ public class XC2 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int affected = in.nextInt();
+        in.nextLine();
         HashMap<Integer, int[]> map = new HashMap<>();
         while (in.hasNextLine()) {
             String[] line = in.nextLine().split(",");

@@ -1,5 +1,7 @@
 package JZOF;
 
+import javax.swing.tree.TreeNode;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -15,24 +17,39 @@ public class XC1 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String s = in.nextLine();
-        String res=buildingHouse(s);
+        String res = buildingHouse(s);
+        String a="GGRGGRRGGGRRGRRRGGRGGRRRGGRRGRR";
+        StringBuffer b=new StringBuffer();
+        for(int i=0;i<a.length();i++){
+            b.append(a.charAt(i));
+        }
         System.out.println(res);
+        System.out.println(a);
+        System.out.println(b.toString().equals(a));
+        System.out.println(res);
+        System.out.println(Arrays.toString(a.getBytes()));
+        System.out.println(Arrays.toString(res.getBytes()));
+        System.out.println(Arrays.toString(b.toString().getBytes()));
+
 
     }
 
-    public static String buildingHouse(String s) {
-        for (int i = 0; i < s.length(); i++) {
-            if (!Character.isDigit(s.charAt(i))) {
-                return "N";
-            }
-        }
-        int n = Integer.parseInt(s);
-        if (n < 1 || n > 12) {
-            return "O";
-        }
-        TR root = new TR('R', n);
-        return TR.inorder(root);
-    }
+
+
+      public static String buildingHouse(String s) {
+              for (int i = 0; i < s.length(); i++) {
+                 if (!Character.isDigit(s.charAt(i))) {
+                      return "N";
+                 }
+              }
+              int n = Integer.parseInt(s);
+              if (n < 1 || n > 12) {
+                  return "O";
+              }
+              TR root = new TR('R', n);
+              return TR.inorder(root);
+          }
+
 }
 
 class TR {
@@ -41,14 +58,14 @@ class TR {
     TR right;
 
     public TR(char c, int height) {
-        if(height<1){
+        if (height < 1) {
             return;
         }
         this.val = c;
-        int l=height;
-        int r=height;
-        this.left = new TR('G', height-1);
-        this.right = new TR('R', height-1);
+        int l = height;
+        int r = height;
+        this.left = new TR('G', height - 1);
+        this.right = new TR('R', height - 1);
 
 
     }

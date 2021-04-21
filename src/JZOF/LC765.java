@@ -44,23 +44,15 @@ public class LC765 {
     public boolean isC(int i,int j){
         int a=Math.min(i,j);
         int b=Math.max(i,j);
-        if(a%2==0&&b==a+1){
-            return true;
-        }
-        return false;
+        return a % 2 == 0 && b == a + 1;
     }
     public boolean isCouple(int[] row,int i){
         int men=row[2*i];
         if(men%2==0){
-            if(row[2*i+1]==men+1){
-                return true;
-            }
+            return row[2 * i + 1] == men + 1;
         }
         else{
-            if(row[2*i+1]==men-1){
-                return true;
-            }
+            return row[2 * i + 1] == men - 1;
         }
-        return false;
     }
 }

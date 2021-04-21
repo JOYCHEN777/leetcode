@@ -7,7 +7,7 @@ public class Main1 {
 
     public static void main(String[] args) {
 
-        String s = new String("FTFFFTFFFF");
+        String s = "FTFFFTFFFF";
         System.out.println(minimumMP(3,10,s));
     }
 

@@ -34,7 +34,7 @@ public class LC5693 {
         return a[1];
     }
     public static void main(String[] args){
-        String s=new String("abc1111123902");
+        String s= "abc1111123902";
         System.out.println(secondHighest(s));
 
     }

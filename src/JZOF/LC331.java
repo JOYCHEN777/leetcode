@@ -35,14 +35,11 @@ public class LC331 {
                 }
             }
         }
-        if (num != 1) {
-            return false;
-        }
-        return true;
+        return num == 1;
 
     }
     public static void main (String[] args){
-        String s=new String("9,#,92,#,#");
+        String s= "9,#,92,#,#";
         System.out.print(isValidSerialization(s));
     }
 }

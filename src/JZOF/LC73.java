@@ -14,7 +14,7 @@ public class LC73 {
         int n = matrix[0].length;
         HashSet<Integer> row = new HashSet<>();
         HashSet<Integer> col = new HashSet<>();
-        String s = new String("asdasdasd");
+        String s = "asdasdasd";
         char[] t1 = s.toCharArray();
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
