@@ -6,6 +6,8 @@ public class Test {
         MyYield m=new MyYield();
         //start()---> 就绪状态，什么时候运行，是由cpu决定。
         Thread t=new Thread(m,"a");
+        t.setPriority(10);
+
         Thread t2=new Thread(m,"b");
         t.start();
 

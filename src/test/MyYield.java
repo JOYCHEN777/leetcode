@@ -13,7 +13,7 @@ public class MyYield implements Runnable {
 
         }
         for(int i=0;i<100;i++){
-            System.out.println(Thread.currentThread().getName()+"----------"+i);
+            System.out.println(Thread.currentThread().getName()+"----------"+i+"---"+Thread.currentThread().getPriority());
         }
 
 
