@@ -2,51 +2,105 @@ package JZOF;
 
 import java.sql.SQLOutput;
 import java.util.*;
+
 final public class EasyTest {
     public static void main(String[] args) {
-        StringBuffer buf = new StringBuffer("abc def ");
-        HashMap<Integer,Integer> map=new HashMap<>();
+        int[] nums=new int[]{2,2};
+        System.out.println(search(nums,2));
+        }
+    public static int search(int[] nums, int target) {
+        if(nums==null||nums.length<1||target<nums[0]||target>nums[nums.length-1]){
+            return 0;
+        }
 
-
-
-        System.out.println(buf.toString()+"!");
-        System.out.println(buf.toString().trim()+"!");
-
-
+        int l=0;
+        int r=nums.length;
+        int res=0;
+        int m=-1;
+        while(l<r){
+            m=l+(r-l)/2;
+            if(target<nums[m]){
+                r=m;
+            }else if(target>nums[m]){
+                l=m+1;
+            }else{
+                l=m;
+                res+=1;
+                break;
+            }
+        }
+        l=m-1;
+        r=m+1;
+        while(l>0&&nums[l]==target){
+            res++;
+            l--;
+        }
+        while(r<nums.length&&nums[r]==target){
+            res++;
+            r++;
+        }
+        return res;
     }
-    public static List<Integer> isPrime(int n){
-        List<Integer> res=new ArrayList<>();
+
+    public static List<Integer> decrease(int[] arr) {
+        List<Integer> res = new ArrayList<>();
+        if (arr.length == 0) {
+            return res;
+        }
+        int l = 0;
+        int r = 1;
+        int max = 1;
+        while (l < arr.length && l < r) {
+            List<Integer> ans = new ArrayList<>();
+            ans.add(arr[l]);
+            while (r < arr.length && arr[r] <= arr[r - 1]) {
+                ans.add(arr[r]);
+                r++;
+            }
+            if (ans.size() > max) {
+                max = ans.size();
+                res = ans;
+            }
+            l = r;
+            r++;
+        }
+        return res;
+    }
+
+    public static List<Integer> isPrime(int n) {
+        List<Integer> res = new ArrayList<>();
         res.add(2);
-        boolean[] mark=new boolean[n+1];//false
-        for(int i=3;i<=Math.sqrt(n);i+=2){
-            if(!mark[i]){//是素数
-                int t=i;
-                while(i*t<=n){
-                    mark[i*t]=true;
+        boolean[] mark = new boolean[n + 1];//false
+        for (int i = 3; i <= Math.sqrt(n); i += 2) {
+            if (!mark[i]) {//是素数
+                int t = i;
+                while (i * t <= n) {
+                    mark[i * t] = true;
                     t++;
                 }
             }
 
         }
-        for (int i=3;i<n+1;i+=2){
-            if (!mark[i]){
+        for (int i = 3; i < n + 1; i += 2) {
+            if (!mark[i]) {
                 res.add(i);
             }
         }
         return res;
     }
+
     public static boolean judgeSquareSum(int c) {
-        boolean[] dp=new boolean[c+1];
-        dp[0]=true;
-        dp[1]=true;
-        for(int i=2;i<c+1;i++){
-            if(Math.sqrt(c)==(int)Math.sqrt(c)){
-                dp[i]=true;
-            }else{
-                dp[i]=false;
-                for(int j=0;j*j<i;j++){
-                    if(dp[i-j*j]==true){
-                        dp[i]=true;
+        boolean[] dp = new boolean[c + 1];
+        dp[0] = true;
+        dp[1] = true;
+        for (int i = 2; i < c + 1; i++) {
+            if (Math.sqrt(c) == (int) Math.sqrt(c)) {
+                dp[i] = true;
+            } else {
+                dp[i] = false;
+                for (int j = 0; j * j < i; j++) {
+                    if (dp[i - j * j] == true) {
+                        dp[i] = true;
                         break;
                     }
                 }
@@ -55,26 +109,25 @@ final public class EasyTest {
         return dp[c];
 
 
-
     }
 
     public static int[] topKFrequent(int[] nums, int k) {
-        if(k>=nums.length){
+        if (k >= nums.length) {
             return nums;
         }
-        HashMap<Integer,Integer> map=new HashMap<>();
-        for(int i=0;i<nums.length;i++){
-            if(map.containsKey(nums[i])){
-                int v=map.get(nums[i])+1;
-                map.put(nums[i],v);
-            }else{
-                map.put(nums[i],1);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
+                int v = map.get(nums[i]) + 1;
+                map.put(nums[i], v);
+            } else {
+                map.put(nums[i], 1);
             }
         }
         List<int[]> list = new ArrayList<>();
-        for(int key:map.keySet()){
-            list.add(new int[]{key,map.get(key)});
-            
+        for (int key : map.keySet()) {
+            list.add(new int[]{key, map.get(key)});
+
         }
         Collections.sort(list, new Comparator<int[]>() {
             @Override
@@ -82,11 +135,11 @@ final public class EasyTest {
                 return o2[1] - o1[1];
             }
         });
-        int[] res=new int[k];
-        for(int i=0;i<k;i++){
-            res[i]=list.get(i)[0];
+        int[] res = new int[k];
+        for (int i = 0; i < k; i++) {
+            res[i] = list.get(i)[0];
         }
-        int[] test=map.entrySet().stream().sorted((m1,m2)->m2.getValue()-m1.getValue()).limit(k).mapToInt(Map.Entry::getKey).toArray();
+        int[] test = map.entrySet().stream().sorted((m1, m2) -> m2.getValue() - m1.getValue()).limit(k).mapToInt(Map.Entry::getKey).toArray();
         return test;
 
 
